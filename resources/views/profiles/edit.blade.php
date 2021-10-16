@@ -32,7 +32,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                     <label for="url" class="col-md-4 col-form-label">URL</label>
                     <input id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') ?? $user->profile->url }}" required autocomplete="url" autofocus>
                     @error('url')
@@ -40,7 +40,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </div>
+                </div> --}}
 
                 <div class="row">            
                     <label for="image" class="col-md-4 col-form-label">Profile Image</label>

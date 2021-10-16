@@ -6,11 +6,11 @@
         <div class="col-3 p-5">
             <img src="{{ $user->profile->profileImage() }}" class="rounded-circle w-100">
         </div>
-        <div class="col-9 p-5">
+        <div class="col-9 p-5 mt-2">
             <div class="d-flex align-items-center pb-2">
                 <div class="h4">{{ $user->username }}</div>
                 @if(auth()->user()->id != $user->id)
-                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}" class="pb-1"></follow-button>
                 @endif
             </div>
         
@@ -30,7 +30,7 @@
             <div>
                 {{ $user->profile->description }}                
             </div>
-            <div><a href="#">{{ $user->profile->url }}</a></div>
+            {{-- <div><a href="#">{{ $user->profile->url }}</a></div> --}}
         </div>
     </div>
 
