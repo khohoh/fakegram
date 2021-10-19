@@ -30,17 +30,27 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $data = request()->validate([
+        // $data = request()->validate([
+        //     'caption' => 'required',
+        //     'image' => 'required|image',
+        // ]);
+
+        $data = $request->validate([
             'caption' => 'required',
             'image' => 'required|image',
         ]);
 
-        $imagePath = request('image')->store('uploads', 'public');
-
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
-        $image->save();
+        // $imagePath = request('image')->store('uploads', 'public');
+        $filenameWithExt = $request->file('image')->getClientOriginalName();
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $fileNameToStore= $filename.'_'.time().'.'.$extension;
+        $imagePath = $request->file('image')->storeAs('/uploads', $fileNameToStore);
+        // $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        $image = Image::make($request->file('image')->getRealPath())->fit(1200, 1200);
+        $image->save('storage/uploads/'.$fileNameToStore);
 
         auth()->user()->posts()->create([
             'caption' => $data['caption'],
