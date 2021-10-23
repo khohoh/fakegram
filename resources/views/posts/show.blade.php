@@ -17,8 +17,17 @@
                             <a href="/profile/{{ $post->user->id }}">
                                 <span class="text-dark">{{ $post->user->username }}</span>
                             </a>
-                            <a href="#" class="pl-3">Follow</a>
                         </div>
+                    </div>
+
+                    <div class="ml-3">
+                        @if(auth()->user()->id === $post->user->id)
+                            <form action="/p/{{ $post->id }}/delete" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-outline-danger btn-sm">Delete</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
 

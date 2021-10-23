@@ -9,7 +9,7 @@
         <div class="col-9 p-5">
             <div class="d-flex align-items-center pb-2">
                 <div class="h4">{{ $user->username }}</div>
-                <button type="button" class="btn btn-primary ml-3 mb-2">
+                <button type="button" class="btn btn-primary btn-sm ml-3 mb-2">
                     <a href="/profile/{{ $user->profile->id }}" class="text-white">My Profile</a>
                 </button>
             </div>
