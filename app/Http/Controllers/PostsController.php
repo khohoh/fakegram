@@ -30,7 +30,7 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $data = request()->validate([
             'caption' => 'required',
@@ -39,7 +39,7 @@ class PostsController extends Controller
 
         $imagePath = request('image')->store('uploads', 'public');
         
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        $image = Image::make(public_path("storage/{$imagePath}"));
         
         $image->save();
 
@@ -47,6 +47,18 @@ class PostsController extends Controller
             'caption' => $data['caption'],
             'image' => $imagePath,
         ]);
+
+        // $this->validate($request, [
+        //     'caption' => 'required',            
+        //     'image' => 'required|image',
+        // ]);
+
+        // $filenameWithExt = $request->file('image')->getClientOriginalName();
+        // $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // $extension = $request->file('image')->getClientOriginalExtension();
+        // $fileNameToStore= $filename.'_'.time().'.'.$extension;
+        // $imagePath = $request->file('image')->storeAs('public/uploads', $fileNameToStore);
+
 
         return redirect('/profile/' .auth()->user()->id);
     }
