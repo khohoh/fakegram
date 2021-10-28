@@ -38,10 +38,10 @@ class PostsController extends Controller
         ]);
 
         $imagePath = request('image')->store('uploads', 'public');
+        // dd($imagePath);
+        // $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
         
-        $image = Image::make(public_path("storage/{$imagePath}"));
-        
-        $image->save();
+        // $image->save();
 
         auth()->user()->posts()->create([
             'caption' => $data['caption'],
@@ -57,8 +57,16 @@ class PostsController extends Controller
         // $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
         // $extension = $request->file('image')->getClientOriginalExtension();
         // $fileNameToStore= $filename.'_'.time().'.'.$extension;
-        // $imagePath = $request->file('image')->storeAs('public/uploads', $fileNameToStore);
+        // $imagePath = $request->file('image')->storeAs('/uploads', $fileNameToStore);
+        // dd($imagePath);
+        // $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        // $image->save();
 
+        // $post = new Post();
+        // $post->user_id = auth()->user()->id;
+        // $post->caption = $request->caption;
+        // $post->image = $fileNameToStore;
+        // $post->save();
 
         return redirect('/profile/' .auth()->user()->id);
     }
