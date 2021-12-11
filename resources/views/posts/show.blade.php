@@ -33,14 +33,16 @@
 
                 <hr>
 
-                <p>
-                    <span class="font-weight-bold">
-                        <a href="/profile/{{ $post->user->id }}">
-                            <span class="text-dark">{{ $post->user->username }}</span>
-                        </a>
-                    </span> 
-                    {{ $post->caption }}
-                </p>
+                <div class="col-4">
+                    <p>
+                        {{-- <span class="font-weight-bold">
+                            <a href="/profile/{{ $post->user->id }}">
+                                <span class="text-dark">{{ $post->user->username }}</span>
+                            </a>
+                        </span>  --}}
+                        {{ $post->caption }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>

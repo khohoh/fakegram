@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FollowsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfilesController;
 // use App\Mail\NewUserWelcomeMail;
@@ -13,9 +14,11 @@ Auth::routes();
 //     return new NewUserWelcomeMail();
 // });
 
+Route::get('/', [HomeController::class, 'index']);
+
 Route::post('follow/{user}', [FollowsController::class, 'store']);
 
-Route::get('/',[PostsController::class, 'index']);
+Route::get('/p/index',[PostsController::class, 'index']);
 Route::get('/p/create', [PostsController::class, 'create']);
 Route::post('/p', [PostsController::class, 'store']);
 Route::get('/p/{post}', [PostsController::class, 'show']);

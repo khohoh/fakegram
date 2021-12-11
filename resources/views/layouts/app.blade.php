@@ -24,12 +24,21 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/') }}">
-                    <div>
-                        <img src="/img/images.png" style="height: 20px; border-right: 1px solid #333;" class="pr-3">
-                    </div>
-                    <div class="pl-3">{{ config('app.name', 'Laravel') }}</div>
-                </a>
+                @if (auth()->user())
+                    <a class="navbar-brand d-flex" href="{{ url('/p/index') }}">
+                        <div>
+                            <img src="/img/images.png" style="height: 20px; border-right: 1px solid #333;" class="pr-3">
+                        </div>
+                        <div class="pl-3">{{ config('app.name', 'Laravel') }}</div>
+                    </a>
+                @else
+                    <a class="navbar-brand d-flex" href="{{ url('/') }}">
+                        <div>
+                            <img src="/img/images.png" style="height: 20px; border-right: 1px solid #333;" class="pr-3">
+                        </div>
+                        <div class="pl-3">{{ config('app.name', 'Laravel') }}</div>
+                    </a>
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
