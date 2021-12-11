@@ -38,7 +38,7 @@
     <div class="row">
         @foreach ($posts as $post)
                 <div class="col-4">
-                    <a href="/profile/{{ $post->user->id }}">
+                    <a href="/p/{{ $post->id }}">
                         <img src="/storage/{{ $post->image }}" class="w-100">
                     </a>
                     <p class="d-flex justify-content-center">

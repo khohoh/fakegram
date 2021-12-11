@@ -33,7 +33,7 @@
 
                 <hr>
 
-                <div class="col-4">
+                <div>
                     <p>
                         {{-- <span class="font-weight-bold">
                             <a href="/profile/{{ $post->user->id }}">
